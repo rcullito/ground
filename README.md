@@ -4,7 +4,14 @@ A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
 
-FIXME
+## TODO
+1. look at how the as-> macro is implemented in clojure source
+
+
+Helpful links
+1. cascalog source code
+2. http://cascalog.org/articles/getting_started.html
+3. https://github.com/nathanmarz/cascalog/blob/develop/cascalog-core/src/clj/cascalog/api.clj
 
 ## License
 
