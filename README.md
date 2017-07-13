@@ -4,14 +4,15 @@ A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
 
-## TODO
-1. look at how the as-> macro is implemented in clojure source
-
-
 Helpful links
-1. cascalog source code
-2. http://cascalog.org/articles/getting_started.html
-3. https://github.com/nathanmarz/cascalog/blob/develop/cascalog-core/src/clj/cascalog/api.clj
+cascalog tutorial
+http://cascalog.org/articles/getting_started.html
+api source
+https://github.com/nathanmarz/cascalog/blob/develop/cascalog-core/src/clj/cascalog/api.clj
+thread first 
+https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj#L1674
+as->
+https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj#L7447
 
 ## License
 

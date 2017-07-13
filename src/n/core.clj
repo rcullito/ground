@@ -5,20 +5,28 @@
    :dog  "Claire"
    :age 37})
 
-
-
 (defmacro n
   "takes a number of formes and magically transforms them"
-  [& forms]
-  `(do ~@forms))
+  [expr & forms]
+  (let [g (gensym)]
+    `(let [~g ~expr
+           ~@(interleave (repeat g) (butlast forms))]
+        ~(if (empty? forms)
+          g
+          (last forms)))))
 
-(n (println "sure")
-   (println "then came the war old sport!"))
+;; the charter of this macro is to provide the best of threading
+;; some, and cond
 
 
 ;;; ideally our syntax should read
-(when-let [val (n
-                (n2 (:age person))
-                (n? (> 0)))]
-  ("it's working!!!"))
+(n person
+   (:age)
+   (> 0))
+
+
+(-> person
+    :age
+    (> 0))
+
 
