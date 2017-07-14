@@ -16,32 +16,28 @@
 
 (defn n?
   [number]
-  (> number 0))
+  (> number 50))
 
 (defmacro n
   [x & forms]
   (loop [x x, forms forms]
     (if forms
-      (let [form (first forms)
+      (let [form     (first forms)
             threaded (if (seq? form)
-                       `(~(first form) ~x ~@(next form))
+                       (if (= (first form) 'n?)
+                         `(~(first form) ~x ~@(next form))
+                         `(~(first form) ~x ~@(next form)))
                        (list form x))]
         (recur threaded (next forms)))
       x)))
 
-
 ;; something like
 ;; eventually this part needs to return either nil or the thing that was passed in if it was true
-
-(if (= (form 'n1))
-  (do (println "it's working")
-      ))
-
 
 ;;; ideally our syntax should read
 (n person
    (:age)
-   n?)
+   (n?))
 
 
 #_
