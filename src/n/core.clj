@@ -7,16 +7,9 @@
 
 ;; basically interleave with the ability to skp a step
 
-(defn n?
-  [form]
-  (if form
-    (second form)
-    ;; by this we really mean the whole thing shoudl return nil, like some->
-    nil))
 
-(defn n?
-  [number]
-  (> number 50))
+;; really if we have n we want to evaluate and if true return the previous value
+
 
 (defmacro n
   [x & forms]
@@ -24,8 +17,9 @@
     (if forms
       (let [form     (first forms)
             threaded (if (seq? form)
-                       (if (= (first form) 'n?)
-                         `(~(first form) ~x ~@(next form))
+                       (if (= (first form) 'n)
+                         (let [post-n-form (second form)]
+                           `(~(first post-n-form) ~x ~@(next post-n-form)))
                          `(~(first form) ~x ~@(next form)))
                        (list form x))]
         (recur threaded (next forms)))
@@ -37,7 +31,8 @@
 ;;; ideally our syntax should read
 (n person
    (:age)
-   (n?))
+   (+ 1)
+   (n (> 39)))
 
 
 #_
