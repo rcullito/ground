@@ -13,19 +13,16 @@
             threaded (if (seq? form)
                        (if (= (first form) 'n)
                          (let [post-n-form (second form)]
-                           `(~(first post-n-form) ~x ~@(next post-n-form)))
+                           `(if (~(first post-n-form) ~x ~@(next post-n-form))
+                             ~x
+                             nil))
                          `(~(first form) ~x ~@(next form)))
                        (list form x))]
         (recur threaded (next forms)))
       x)))
 
-
-;; the next step is that based on the boolean
-;; true, we return x, false we return nil
-
-
 (n person
    (:age)
    (+ 1)
-   (n (> 39)))
+   (n (> 35)))
 
