@@ -4,7 +4,10 @@ A Clojure library designed to ... well, that part is up to you.
 
 ## Usage
 
-Helpful links
+<img src="http://www.csstoday.com/UploadFiles/Multimedia/2015/4/201504161045388080.jpg"
+ alt="Along the river" height="250" />
+
+## Influences
 cascalog tutorial
 http://cascalog.org/articles/getting_started.html
 api source
