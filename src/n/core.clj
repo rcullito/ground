@@ -26,3 +26,8 @@
    (+ 1)
    (n (> 35)))
 
+
+
+;; todo we need to make sure that a nil with more steps will actually stop.
+;; change the license to MIT
+;; update readme with examples of how the macro is actually used in practice.
