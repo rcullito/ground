@@ -1,21 +1,15 @@
 # n
 
-A Clojure library designed to ... well, that part is up to you.
-
-## Usage
+N makes it simple to deal with conditional logic in the midst of threading expressions.
 
 <img src="http://www.csstoday.com/UploadFiles/Multimedia/2015/4/201504161045388080.jpg"
  alt="Along the river" height="250" />
 
-## Influences
-cascalog tutorial
-http://cascalog.org/articles/getting_started.html
-api source
-https://github.com/nathanmarz/cascalog/blob/develop/cascalog-core/src/clj/cascalog/api.clj
-thread first 
-https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj#L1674
-as->
-https://github.com/clojure/clojure/blob/master/src/clj/clojure/core.clj#L7447
+## Usage
+
+Prefix forms within the `n` macro with another `n` to signify predicates that will return the form they were passed if true. 
+
+If the form following `n` is falsey, then the macro borrows the behavior of `some->` : "short circuiting" out of the series of steps with a nil. 
 
 ## License
 
