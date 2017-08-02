@@ -1,6 +1,6 @@
 # n
 
-n makes it simple to deal with conditional logic in the midst of threading expressions.
+like some->, except forms following n are treated as predicates that do not affect the value passed to the next form.
 
 <img src="http://www.csstoday.com/UploadFiles/Multimedia/2015/4/201504161045388080.jpg"
  alt="Along the river" height="250" />
