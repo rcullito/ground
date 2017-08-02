@@ -14,14 +14,14 @@ like some->, except forms following n are treated as predicates that do not affe
    :dog  "Claire"
    :age 37})
 
-;; if the post `n` form evaluates to true, return previous value
+;; if the post n form evaluates to true, return previous value
 
 (n person
    (:age)
    (inc)
    (n (> 35))) => 38
 
-;; if the post `n` form evaluates to false, exit the thread with a nil
+;; if the post n form evaluates to false, exit the thread with a nil
 ;; following lines will not throw a NullPointerException
 
 (n person
