@@ -2,7 +2,7 @@
 
 (defmacro n
   "like some->, except forms following n are treated as predicates
-  that do not affect the value passed to the next form."
+n  that do not affect the value passed to the next form."
   [expr & forms]
   (let [g (gensym)
         steps (map (fn [step]
@@ -19,17 +19,3 @@
           g
           (last steps)))))
 
-(n person
-   (:age)
-   (+ 1)
-   (n (> 35)))
-
-(n person
-   (:age)
-   (n (> 40))
-   (+ 10))
-
-(-> person
-    (:gender)
-    (> 40)
-    inc)
