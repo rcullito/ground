@@ -7,9 +7,24 @@ like some->, except forms following n are treated as predicates that do not affe
 
 ## Usage
 
-Prefix forms within the `n` macro with another `n` to signify predicates that will return the form they were passed if true. 
+Increment all the values in maps of maps:
+```clojure
+(def person
+  {:name "Nancy"
+   :dog  "Claire"
+   :age 37})
 
-If the form following `n` is falsey, then the macro borrows the behavior of `some->` : "short circuiting" out of the series of steps with a nil. 
+(n person
+   (:age)
+   (inc)
+   (n (> 35))) => 38
+
+(n person
+   (:age)
+   (n (> 40))
+   (+ 10)) => nil
+
+```
 
 ## License
 
