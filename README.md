@@ -5,6 +5,8 @@ like some->, except forms following n are treated as predicates that do not affe
 <img src="http://www.csstoday.com/UploadFiles/Multimedia/2015/4/201504161045388080.jpg"
  alt="Along the river" height="250" />
 
+[![Clojars Project](https://img.shields.io/clojars/v/n.core.svg)](https://clojars.org/n.core)
+
 ## Usage
 
 ```clojure

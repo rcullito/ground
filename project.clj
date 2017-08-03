@@ -1,6 +1,6 @@
-(defproject n "0.1.0-SNAPSHOT"
-  :description "FIXME: write description"
-  :url "http://example.com/FIXME"
-  :license {:name "Eclipse Public License"
-            :url "http://www.eclipse.org/legal/epl-v10.html"}
+(defproject n.core "0.1.0"
+  :description "threading macro with predicates that don't alter the pass through value"
+  :url "https://clojars.org/n.core"
+  :license {:name "MIT License"
+            :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.8.0"]])
