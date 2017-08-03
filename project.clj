@@ -1,4 +1,4 @@
-(defproject n.core "0.1.1"
+(defproject n.core "0.1.2-SNAPSHOT"
   :description "threading macro with predicates that don't alter the pass through value"
   :url "https://clojars.org/n.core"
   :license {:name "MIT License"
