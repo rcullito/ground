@@ -10,7 +10,7 @@
 
 (defmacro n
   "like some->, except forms following n are treated as predicates
-n  that do not affect the value passed to the next form."
+  that do not affect the value passed to the next form."
   [expr & forms]
   (let [g (gensym)
         steps (map (fn [step]
