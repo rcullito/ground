@@ -14,10 +14,17 @@
                  (inc)
                  (n (> 35)))))))
 
-(deftest predicate-returns-false
+(deftest predicate-returns-nil
   (testing "that a false predicate returns nil for the entire form"
     (is (= nil (n person
                   (:age)
                   (n (> 40))
+                  (+ 10))))))
+
+(deftest accept-non-seq-predicate
+  (testing "a keyfn not wrapped in parens should be valid"
+    (is (= 47 (n person
+                  :age
+                  (n (> 30))
                   (+ 10))))))
 
