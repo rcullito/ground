@@ -14,10 +14,8 @@
   [expr & forms]
   (let [g (gensym)
         steps (map (fn [step]
-                     (if (seq? step)
-                       (if (= (first step) 'n)
+                     (if ((every-pred seq? #(= (first %) 'n)) step)
                        (handle-n-form g step)
-                       `(if (nil? ~g) nil (-> ~g ~step)))
                        `(if (nil? ~g) nil (-> ~g ~step))))
                    forms)]
     `(let [~g ~expr
