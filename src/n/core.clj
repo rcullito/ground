@@ -4,7 +4,7 @@
   [g step]
   (let [post-n-step (second step)]
     `(if (nil? ~g) nil
-         (if (~(first post-n-step) ~g ~@(next post-n-step))
+         (if (-> ~g ~step)
            ~g
            nil))))
 
