@@ -1,6 +1,7 @@
 # n
 
 ![](https://clojars.org/n.core/latest-version.svg)
+
 [![Build Status](https://travis-ci.org/rcullito/n.svg?branch=master)](https://travis-ci.org/rcullito/n)
 [![Clojars Project](https://img.shields.io/clojars/v/n.core.svg)](https://clojars.org/n.core)
 
