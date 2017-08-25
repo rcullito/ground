@@ -42,7 +42,7 @@ Make an assertion about your data. Only proceed if that assertion is truthy.
 
 ```
 
-If you hit a NullPointerException, you can go back and refactor with n to exit with panache.
+If you hit a NullPointerException, you can go back and refactor with `n` to exit with panache.
 
 ```clojure
 (->> [1 nil 2]
