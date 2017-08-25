@@ -49,5 +49,3 @@
                       (filter identity)
                       (n (not-any? nil?))
                       (map dec)))))
-
-
