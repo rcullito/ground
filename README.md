@@ -2,9 +2,6 @@
 
 ![](https://clojars.org/n.core/latest-version.svg)
 
-[![Build Status](https://travis-ci.org/rcullito/n.svg?branch=master)](https://travis-ci.org/rcullito/n)
-[![Clojars Project](https://img.shields.io/clojars/v/n.core.svg)](https://clojars.org/n.core)
-
 <img src="http://www.csstoday.com/UploadFiles/Multimedia/2015/4/201504161045388080.jpg"
  alt="Along the river" height="250" />
 
@@ -17,6 +14,9 @@
 ```
 
 `n` will thread first or last depending on whether `expr` passed to `n` is `sequential?`
+
+[![Build Status](https://travis-ci.org/rcullito/n.svg?branch=master)](https://travis-ci.org/rcullito/n)
+[![Clojars Project](https://img.shields.io/clojars/v/n.core.svg)](https://clojars.org/n.core)
 
 ## Usage
 
