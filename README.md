@@ -1,8 +1,13 @@
 # n
 
 ![](https://clojars.org/n.core/latest-version.svg)
+[![Build Status](https://travis-ci.org/rcullito/n.svg?branch=master)](https://travis-ci.org/rcullito/n)
+[![Clojars Project](https://img.shields.io/clojars/v/n.core.svg)](https://clojars.org/n.core)
 
-like some-> or some->>, except forms following subsequent n's are treated as predicates that do not affect the value passed to the next form.
+<img src="http://www.csstoday.com/UploadFiles/Multimedia/2015/4/201504161045388080.jpg"
+ alt="Along the river" height="250" />
+
+## About
 
 ```clojure
 
@@ -10,13 +15,6 @@ like some-> or some->>, except forms following subsequent n's are treated as pre
 
 ```
 
-<img src="http://www.csstoday.com/UploadFiles/Multimedia/2015/4/201504161045388080.jpg"
- alt="Along the river" height="250" />
-
-[![Build Status](https://travis-ci.org/rcullito/n.svg?branch=master)](https://travis-ci.org/rcullito/n)
-[![Clojars Project](https://img.shields.io/clojars/v/n.core.svg)](https://clojars.org/n.core)
-
-## About
 `n` will thread first or last depending on whether `expr` passed to `n` is `sequential?`
 
 ## Usage
