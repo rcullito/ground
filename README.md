@@ -1,5 +1,9 @@
 # n
+```clojure
 
+(n expr & forms)
+
+```
 like some-> or some->>, except forms following subsequent n's are treated as predicates that do not affect the value passed to the next form.
 
 <img src="http://www.csstoday.com/UploadFiles/Multimedia/2015/4/201504161045388080.jpg"
@@ -11,7 +15,11 @@ like some-> or some->>, except forms following subsequent n's are treated as pre
 ## About
 `n` will thread first or last depending on whether `expr` passed to `n` is `sequential?`
 
+`n` will short circuit with a nil if any intermediate expression evaulates to nil, or if a predicate following `n` evaluates to non-truthy (false/nil).
+
 ## Usage
+
+Make an assertion about your data.
 
 ```clojure
 
@@ -22,28 +30,26 @@ like some-> or some->>, except forms following subsequent n's are treated as pre
    :dog  "Claire"
    :age 37})
 
-;; if the form following n evaluates to true, return previous value rather than the result of the prior expression.
-
 (n person
    (:age)
    (inc)
    (n (> 35))) => 38
+```
 
-;; if the form following n evaluates to false, exit the thread with a nil
-;; the following lines will not throw a NullPointerException
+Short circuit before hitting a NullPointerException.
 
+```clojure
 (n person
    (:age)
    (n (> 40))
    (+ 10)) => nil
+```
 
+Verify your sequences and then proceed as usual.
 
-;; thread last will throw an exception
-
+```clojure
 (->> [1 nil 2]
      (map inc)) => Unhandled java.lang.NullPointerException
-
-;; the same check can be gaurded against within the n threading operator
 
 (n [1 nil 3]
    (n (every? number?))
