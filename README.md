@@ -1,4 +1,7 @@
 # n
+
+![](https://clojars.org/n.core/latest-version.svg)
+
 ```clojure
 
 (n expr & forms)
