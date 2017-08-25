@@ -15,11 +15,9 @@ like some-> or some->>, except forms following subsequent n's are treated as pre
 ## About
 `n` will thread first or last depending on whether `expr` passed to `n` is `sequential?`
 
-`n` will short circuit with a nil if any intermediate expression evaulates to nil, or if a predicate following `n` evaluates to a non-truthy value.
-
 ## Usage
 
-Make an assertion about your data.
+Make an assertion about your data. Only proceed if that assertion is truthy.
 
 ```clojure
 
@@ -32,20 +30,17 @@ Make an assertion about your data.
 
 (n person
    (:age)
-   (inc)
-   (n (> 35))) => 38
-```
+   (n (> 30))
+   inc) => 38
 
-Short circuit before hitting a NullPointerException.
-
-```clojure
 (n person
    (:age)
    (n (> 40))
-   (+ 10)) => nil
+   inc) => nil
+
 ```
 
-Verify your sequences and then proceed as usual.
+If you hit a NullPointerException, you can go back and refactor with n to exit with panache.
 
 ```clojure
 (->> [1 nil 2]
@@ -54,10 +49,13 @@ Verify your sequences and then proceed as usual.
 (n [1 nil 3]
    (n (every? number?))
    (map inc)) => nil
+```
 
+The safeguard won't clutter your business logic when the data holds to the contract.
+
+```clojure
 (n [1 2 3]
    (n (every? number?))
    (map inc)) => (2 3 4)
 
 ```
-
