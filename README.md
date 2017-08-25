@@ -20,8 +20,7 @@ like some-> or some->>, except forms following subsequent n's are treated as pre
 Make an assertion about your data. Only proceed if that assertion is truthy.
 
 ```clojure
-
-[n.core :refer [n]]
+(use 'n.core)
 
 (def person
   {:name "Nancy"
