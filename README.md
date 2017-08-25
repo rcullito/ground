@@ -6,8 +6,6 @@
  alt="Along the river" height="250" />
 
 ## About
-[![Build Status](https://travis-ci.org/rcullito/n.svg?branch=master)](https://travis-ci.org/rcullito/n)
-[![Clojars Project](https://img.shields.io/clojars/v/n.core.svg)](https://clojars.org/n.core)
 
 ```clojure
 
@@ -18,6 +16,9 @@
 `n` will thread first or last depending on whether `expr` passed to `n` is `sequential?`
 
 ## Usage
+
+[![Build Status](https://travis-ci.org/rcullito/n.svg?branch=master)](https://travis-ci.org/rcullito/n)
+[![Clojars Project](https://img.shields.io/clojars/v/n.core.svg)](https://clojars.org/n.core)
 
 Make an assertion about your data. Only proceed if that assertion is truthy.
 
