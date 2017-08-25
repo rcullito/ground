@@ -15,7 +15,7 @@ like some-> or some->>, except forms following subsequent n's are treated as pre
 ## About
 `n` will thread first or last depending on whether `expr` passed to `n` is `sequential?`
 
-`n` will short circuit with a nil if any intermediate expression evaulates to nil, or if a predicate following `n` evaluates to non-truthy (false/nil).
+`n` will short circuit with a nil if any intermediate expression evaulates to nil, or if a predicate following `n` evaluates to a non-truthy value.
 
 ## Usage
 
