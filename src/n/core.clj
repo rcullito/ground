@@ -1,9 +1,9 @@
 (ns n.core)
 
-(defmacro thread-smart
-  "if the current expr is sequential, thread last
-  this needs to be a macro so that expressions passed in are
-  not evaluated as args. i.e: '(:age) has too few args'"
+(defmacro -*
+  "this is called within a syntax quote, with the requirement that 
+  its arguments are unquoted but then need to remain unevaluated.
+  this is why -* is implemented as a macro."
   [expr form]
   `(if (sequential? ~expr)
      (->> ~expr ~form)
@@ -15,7 +15,7 @@
   (let [post-n-step (second step)]
     `(if (nil? ~g)
        nil
-       (if (thread-smart ~g ~post-n-step)
+       (if (-* ~g ~post-n-step)
          ;; this is the pass through
          ;; i.e. rather than evaluating the current form
          ;; we pass along the previous value: g
@@ -30,7 +30,7 @@
     (handle-n-form g step)
     `(if (nil? ~g)
        nil
-       (thread-smart ~g ~step))))
+       (-* ~g ~step))))
 
 (defmacro n
   "like some->, except forms following n are treated as predicates
