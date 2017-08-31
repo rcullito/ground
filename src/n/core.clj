@@ -1,11 +1,11 @@
 (ns n.core)
 
-(defn thread-smart
+(defmacro thread-smart
   "if the current expr is sequential, thread last"
-  [g step]
-  (if (sequential? ~g)
-    (->> ~g ~step)
-    (-> ~g ~step)))
+  [expr form]
+  `(if (sequential? ~expr)
+     (->> ~expr ~form)
+     (-> ~expr ~form)))
 
 (defn handle-n-form
   "handle the 'pass-through' functionality"
@@ -13,7 +13,7 @@
   (let [post-n-step (second step)]
     `(if (nil? ~g)
        nil
-       (if (thread-smart g post-n-step)
+       (if (thread-smart ~g ~post-n-step)
          ;; this is the pass through
          ;; i.e. rather than evaluating the current form
          ;; we pass along the previous value: g
@@ -28,7 +28,7 @@
     (handle-n-form g step)
     `(if (nil? ~g)
        nil
-       (thread-smart g step))))
+       (thread-smart ~g ~step))))
 
 (defmacro n
   "like some->, except forms following n are treated as predicates
