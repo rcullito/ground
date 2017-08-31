@@ -1,7 +1,9 @@
 (ns n.core)
 
 (defmacro thread-smart
-  "if the current expr is sequential, thread last"
+  "if the current expr is sequential, thread last
+  this needs to be a macro so that expressions passed in are
+  not evaluated as args. i.e: '(:age) has too few args'"
   [expr form]
   `(if (sequential? ~expr)
      (->> ~expr ~form)
