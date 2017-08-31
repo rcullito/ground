@@ -8,6 +8,7 @@
     (-> ~g ~step)))
 
 (defn handle-n-form
+  "handle the 'pass-through' functionality"
   [g step]
   (let [post-n-step (second step)]
     `(if (nil? ~g)
@@ -20,6 +21,8 @@
          nil))))
 
 (defn step-fn
+  "if the current form begins with an n, followed by another form
+  handle it differently, otherwise threading functions normally"
   [g step]
   (if ((every-pred seq? #(= (first %) 'n)) step)
     (handle-n-form g step)
