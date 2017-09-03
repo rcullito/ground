@@ -50,10 +50,11 @@
   [expr & forms]
   (let [steps (map (fn [sure]
                        (if (= 'n (first sure))
-                         (second (sure))
+                         (second sure)
                          sure))
                      forms)]
     `(-> ~expr ~@steps)))
 
 (n-> "sure"
-     reverse)
+     (reverse)
+     (n (reverse)))
