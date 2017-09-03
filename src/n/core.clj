@@ -51,7 +51,7 @@
   (let [steps (reduce (fn [acc x]
                         (if (= 'n (first x))
                           ;; wrap this in a check 
-                          `(-> acc (second x))
+                          `(-> ~acc ~(second x))
                           `(-> ~acc ~x)))
                       expr
                       forms)]
@@ -59,5 +59,5 @@
 
 (n-> "cat"
      (reverse)
-     (reverse))
+     (n (reverse)))
 
