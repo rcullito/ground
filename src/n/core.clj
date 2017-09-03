@@ -48,13 +48,16 @@
 
 (defmacro n->
   [expr & forms]
-  (let [steps (map (fn [sure]
-                       (if (= 'n (first sure))
-                         (second sure)
-                         sure))
-                     forms)]
-    `(-> ~expr ~@steps)))
+  (let [steps (reduce (fn [acc x]
+                        (if (= 'n (first x))
+                          ;; wrap this in a check 
+                          `(-> acc (second x))
+                          `(-> ~acc ~x)))
+                      expr
+                      forms)]
+    steps))
 
-(n-> "sure"
+(n-> "cat"
      (reverse)
-     (n (reverse)))
+     (reverse))
+
