@@ -51,13 +51,15 @@
   (let [steps (reduce (fn [acc x]
                         (if (= 'n (first x))
                           ;; wrap this in a check 
-                          `(-> ~acc ~(second x))
+                          `(if (-> ~acc ~(second x))
+                             ~acc
+                             nil)
                           `(-> ~acc ~x)))
                       expr
                       forms)]
     steps))
 
-(n-> "cat"
-     (reverse)
-     (n (reverse)))
+(n-> 37
+     (inc)
+     (n (> 30)))
 
