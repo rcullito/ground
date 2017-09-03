@@ -56,4 +56,5 @@
     `(-> ~expr ~@steps)))
 
 (n-> "sure"
-     reverse)
+     (reverse)
+     (n (reverse)))
