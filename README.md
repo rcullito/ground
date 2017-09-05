@@ -60,5 +60,5 @@ Make an assertion about your data. Only proceed if that assertion is truthy.
 
 ```
 
-`n->>` perfroms the same behavior in place of `->>`.
+`n->>` performs the same behavior in place of `->>`.
 
