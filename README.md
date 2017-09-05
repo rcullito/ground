@@ -1,32 +1,48 @@
-# n
+# ground
 
-![](https://clojars.org/n.core/latest-version.svg)
+![](https://clojars.org/ground/latest-version.svg)
 
-<img src="http://www.csstoday.com/UploadFiles/Multimedia/2015/4/201504161045388080.
-jpg"
- alt="Along the river" height="250" />
-
-## About
-
-```clojure
-
-(n-> expr & forms)
-
-```
+"The ground wire is an additional path for electrical current to return safely to the ground without danger to anyone in the event of a short circuit."
 
 ## Usage
+[![Clojars Project](https://img.shields.io/clojars/v/ground.svg)](https://clojars.org/ground)
 
-like some->, except predicates prefixed with n either pass through the prior result or return nil for the entire form.
+### grounding
 
+`ground->` will behave exactly as `->` if no exceptions are thrown. 
 
-[![Build Status](https://travis-ci.org/rcullito/n.svg?branch=master)](https://travis-ci.org/rcullito/n)
-[![Clojars Project](https://img.shields.io/clojars/v/n.core.svg)](https://clojars.org/n.core)
+```clojure
+(use 'ground)
+
+(ground-> "name"
+	reverse
+	(nth 2)) => \a
+```	
+
+Otherwise it will suppress the exception and return nil.
+
+```clojure
+(ground-> "name"
+	reverse
+	(nth 8)) => nil
+```
+
+Whereas normal threading would throw:
+
+```clojure
+(-> "name"
+    reverse
+    (nth 8)) => java.lang.IndexOutOfBoundsException
+```
+
+`ground->>` performs the same behavior in place of `->>`.
+
+### n predicates
+
 
 Make an assertion about your data. Only proceed if that assertion is truthy.
 
 ```clojure
-(use 'n.core)
-
 (def person
   {:name "Nancy"
    :dog  "Claire"
@@ -44,4 +60,5 @@ Make an assertion about your data. Only proceed if that assertion is truthy.
 
 ```
 
+`n->>` perfroms the same behavior in place of `->>`.
 
