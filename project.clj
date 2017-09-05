@@ -1,7 +1,7 @@
 (def VERSION (.trim (slurp "VERSION")))
 
-(defproject n.core VERSION
-  :description "threading macro with predicates that don't alter the pass through value"
+(defproject ground VERSION
+  :description "library of threading macros to handle exceptions and intra-thread predicates"
   :url "https://clojars.org/n.core"
   :license {:name "MIT License"
             :url "https://opensource.org/licenses/MIT"}
