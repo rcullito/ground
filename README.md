@@ -5,6 +5,8 @@
 "The ground wire is an additional path for electrical current to return safely to the ground without danger to anyone in the event of a short circuit."
 
 ## Usage
+
+[![Build Status](https://travis-ci.org/rcullito/ground.svg?branch=master)](https://travis-ci.org/rcullito/ground)
 [![Clojars Project](https://img.shields.io/clojars/v/ground.svg)](https://clojars.org/ground)
 
 ### grounding
