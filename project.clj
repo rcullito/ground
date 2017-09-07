@@ -5,4 +5,5 @@
   :url "https://clojars.org/n.core"
   :license {:name "MIT License"
             :url "https://opensource.org/licenses/MIT"}
-  :dependencies [[org.clojure/clojure "1.8.0"]])
+  :dependencies [[org.clojure/clojure "1.8.0"]]
+  :plugins [[lein-codox "0.10.3"]])
