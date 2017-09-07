@@ -1,7 +1,10 @@
 (ns ground.core)
 
 (defmacro n->
-  "like some->, except predicates prefixed with n either pass through the prior result or return nil for the entire form."
+  "within -> threading, include predicates after the symbol `n` to either forward 
+  the prior expression if true, or return nil for the entire form if false.
+  Assuming the prior expression resulted in an int, a valid n predicate might be:
+  `(n (> 3))`"
   [expr & forms]
   (reduce (fn [acc x]
             (if (= 'n (first x))
@@ -13,7 +16,10 @@
           forms))
 
 (defmacro n->>
-  "like some->>, except predicates prefixed with n either pass through the prior result or return nil for the entire form."
+  "within ->> threading, include predicates after the symbol `n` to either forward 
+  the prior expression if true, or return nil for the entire form if false.
+  Assuming the prior expression was a collection, a valid n predicate might be:
+  `(n (every? identity))`"
   [expr & forms]
   (reduce (fn [acc x]
             (if (= 'n (first x))
@@ -25,14 +31,14 @@
           forms))
 
 (defmacro ground->
-  "like ->, except returns nil if exception is thrown"
+  "behaves like ->, except returns nil if exception is thrown"
   [expr & forms]
   `(try (-> ~expr
             ~@forms)
         (catch Exception e# nil)))
 
 (defmacro ground->>
-  "like ->>, except returns nil if exception is thrown"
+  "behaves like ->>, except returns nil if exception is thrown"
   [expr & forms]
   `(try (doall (->> ~expr
                     ~@forms)) 
