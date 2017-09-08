@@ -40,17 +40,17 @@ the prior expression if true, and return nil for the entire form if false
 	(map inc)) => nil
 ```
 
-### grounding
+### ignoring errors
 
 `ground->` and `ground->>` will suppress errors during threading, returning nil instead
 
 ```clojure
-(ground->> 1
+(ground->> 51
            dec
-           (/ 100))
+           (/ 100)) = 2
 
 (ground->> 1
            dec
-           (/ 100)) = nil
+           (/ 100)) => nil
 ```	
 
