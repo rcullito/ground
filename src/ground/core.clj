@@ -3,7 +3,7 @@
 (defmacro n->
   "within -> threading, include predicates after the symbol `n` to either forward 
   the prior expression if true, or return nil for the entire form if false.
-  Assuming the prior expression resulted in an int, a valid n predicate might be:
+  Assuming the prior expression resulted in an integer, a valid n predicate might be:
   `(n (> 3))`"
   [expr & forms]
   (reduce (fn [acc x]
@@ -18,7 +18,7 @@
 (defmacro n->>
   "within ->> threading, include predicates after the symbol `n` to either forward 
   the prior expression if true, or return nil for the entire form if false.
-  Assuming the prior expression was a collection, a valid n predicate might be:
+  Assuming the prior expression resulted in a collection, a valid n predicate might be:
   `(n (every? identity))`"
   [expr & forms]
   (reduce (fn [acc x]
