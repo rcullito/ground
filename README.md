@@ -40,9 +40,9 @@ the prior expression if true, and return nil for the entire form if false
 	(map inc)) => nil
 ```
 
-### ignoring errors
+### ignoring exceptions
 
-`ground->` and `ground->>` will ignore errors during threading, returning nil instead
+`ground->` and `ground->>` will ignore exceptions during threading, returning nil instead
 
 ```clojure
 (ground->> 51
