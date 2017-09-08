@@ -42,7 +42,7 @@ the prior expression if true, and return nil for the entire form if false
 
 ### ignoring errors
 
-`ground->` and `ground->>` will suppress errors during threading, returning nil instead
+`ground->` and `ground->>` will ignore errors during threading, returning nil instead
 
 ```clojure
 (ground->> 51
