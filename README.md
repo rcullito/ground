@@ -4,72 +4,53 @@
 
 "The ground wire is an additional path for electrical current to return safely to the ground without danger to anyone in the event of a short circuit."
 
-## Usage
+## Getting Started 
 
 [![Build Status](https://travis-ci.org/rcullito/ground.svg?branch=master)](https://travis-ci.org/rcullito/ground)
 [![Clojars Project](https://img.shields.io/clojars/v/ground.svg)](https://clojars.org/ground)
 
-### grounding
-
-`ground->` will behave exactly as `->` if no exceptions are thrown. 
-
 ```clojure
-(use 'ground)
-
-(ground-> "name"
-	reverse
-	(nth 2)) => \a
-```	
-
-Otherwise it will suppress the exception and return nil.
-
-```clojure
-(ground-> "name"
-	reverse
-	(nth 8)) => nil
+(ns demo.core
+  (:require [ground.core :refer :all]))
 ```
 
-Whereas normal threading would throw:
+###  predicates
+
+predicates after the symbol `n` pass through
+the prior expression if true, and return nil for the entire form if false
 
 ```clojure
-(-> "name"
-    reverse
-    (nth 8)) => java.lang.IndexOutOfBoundsException
+(n-> 6
+    (n (> 5))
+    (vector 7 8)) => [6 7 8]
+
+(n-> 9
+    (n (> 10))
+    (vector 11 12))  => nil
 ```
 
-`ground->>` performs the same behavior in place of `->>`.
-
-### n predicates
-
-
-Make an assertion about your data. Only proceed if that assertion is truthy.
-
-```clojure
-(def person
-  {:name "Nancy"
-   :dog  "Claire"
-   :age 37})
-
-(n-> person
-   (:age)
-   (n (> 30))
-   (inc)) => 38
-
-(n-> person
-   (:age)
-   (n (> 40))
-   (inc)) => nil
-
-```
-
-`n->>` performs the same behavior in place of `->>`.
 
 ```clojure
 (n->> [1 2 3]
 	(n (every? identity))
 	(map inc)) => '(2 3 4)
 
-(n->> [1 2 3]
-	(n (every? #(> % 2)))
+(n->> [1 nil 3]
+	(n (every? identity))
 	(map inc)) => nil
 ```
+
+### grounding
+
+`ground->` and `ground->>` will suppress errors during threading, returning nil instead
+
+```clojure
+(ground->> 1
+           dec
+           (/ 100))
+
+(ground->> 1
+           dec
+           (/ 100)) = nil
+```	
+
