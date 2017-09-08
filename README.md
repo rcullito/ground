@@ -64,3 +64,12 @@ Make an assertion about your data. Only proceed if that assertion is truthy.
 
 `n->>` performs the same behavior in place of `->>`.
 
+```clojure
+(n->> [1 2 3]
+	(n (every? identity))
+	(map inc)) => '(2 3 4)
+
+(n->> [1 2 3]
+	(n (every? #(> % 2)))
+	(map inc)) => nil
+```
