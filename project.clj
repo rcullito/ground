@@ -2,7 +2,7 @@
 
 (defproject ground VERSION
   :description "library of threading macros to handle exceptions and intra-thread predicates"
-  :url "https://clojars.org/n.core"
+  :url "https://rcullito.github.io/ground/index.html"
   :license {:name "MIT License"
             :url "https://opensource.org/licenses/MIT"}
   :dependencies [[org.clojure/clojure "1.8.0"]]
