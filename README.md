@@ -26,7 +26,7 @@ the prior expression if true, and return nil for the entire form if false
 
 (n-> 9
     (n (> 10))
-    (vector 11 12))  => nil
+    (vector 11 12)) => nil
 ```
 
 
@@ -47,7 +47,7 @@ the prior expression if true, and return nil for the entire form if false
 ```clojure
 (ground->> 51
            dec
-           (/ 100)) = 2
+           (/ 100)) => 2
 
 (ground->> 1
            dec
