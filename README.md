@@ -14,6 +14,8 @@
   (:require [ground.core :refer :all]))
 ```
 
+![ground](https://github.com/rcullito/ground/blob/master/ground.png)
+
 ## Usage
 
 ###  predicates
