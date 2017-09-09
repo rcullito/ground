@@ -45,15 +45,24 @@
         (catch Exception e# nil)))
 
 
+(defn try-catch-thread
+  [expr forms operator]
+  `(try (~operator ~expr
+             ~@forms)
+        (catch Exception e# nil)))
+
+;; we need to figure out how to wrap this
+(defn try-catch-thread-with-doall
+  [expr forms operator]
+  `(try (doall (~operator ~expr
+          ~@forms))
+        (catch Exception e# nil)))
+
 (defmacro lucille
   [expr & forms]
   (cond
-    (sequential? expr) `(try (doall (->> ~expr
-                                  ~@forms)) 
-                      (catch Exception e# nil)) 
-    :else `(try (->> ~expr
-                     ~@forms)
-                (catch Exception e# nil))))
+    (sequential? expr) (try-catch-thread-with-doall expr forms '->>) 
+    :else (try-catch-thread expr forms '->>)))
 
-(lucille [1 2]
-         (map inc))
+(lucille   
+           inc)
