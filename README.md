@@ -2,6 +2,8 @@
 
 ![](https://clojars.org/ground/latest-version.svg)
 
+<img src="ground.png" alt="ground" width="50px" />
+
 "The ground wire is an additional path for electrical current to return safely to the ground without danger to anyone in the event of a short circuit."
 
 ## Getting Started 
@@ -13,8 +15,6 @@
 (ns demo.core
   (:require [ground.core :refer :all]))
 ```
-
-<img src="ground.png" alt="ground" width="100px" />
 
 ## Usage
 
