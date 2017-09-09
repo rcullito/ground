@@ -14,7 +14,7 @@
   (:require [ground.core :refer :all]))
 ```
 
-![ground](https://github.com/rcullito/ground/blob/master/ground.png)
+![ground](https://github.com/rcullito/ground/blob/master/ground.png =250x)
 
 ## Usage
 
