@@ -30,14 +30,14 @@
           expr
           forms))
 
-(defn try-catch-thread
+(defn- try-catch-thread
   [expr forms operator]
   `(try (~operator ~expr
              ~@forms)
         (catch Exception e# nil)))
 
 ;; need to figure out how to wrap this from previous fn
-(defn try-catch-thread-with-doall
+(defn- try-catch-thread-with-doall
   [expr forms operator]
   `(try (doall (~operator ~expr
           ~@forms))
