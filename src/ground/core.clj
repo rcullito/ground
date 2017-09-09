@@ -43,3 +43,17 @@
   `(try (doall (->> ~expr
                     ~@forms)) 
         (catch Exception e# nil)))
+
+
+(defmacro lucille
+  [expr & forms]
+  (cond
+    (sequential? expr) `(try (doall (->> ~expr
+                                  ~@forms)) 
+                      (catch Exception e# nil)) 
+    :else `(try (->> ~expr
+                     ~@forms)
+                (catch Exception e# nil))))
+
+(lucille [1 2]
+         (map inc))
