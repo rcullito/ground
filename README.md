@@ -14,9 +14,7 @@
   (:require [ground.core :refer :all]))
 ```
 
-## Usage
-
-<img src="ground.png" alt="ground" width="50px" />
+## Usage <img src="ground.png" alt="ground" width="50px" />
 
 ###  predicates
 
