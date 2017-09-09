@@ -14,7 +14,7 @@
   (:require [ground.core :refer :all]))
 ```
 
-<img src="ground.png" alt="ground" style="width: 200px;"/>
+<img src="ground.png" alt="ground" width="100px" />
 
 ## Usage
 
