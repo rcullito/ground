@@ -19,6 +19,8 @@
 predicates after the symbol `n` pass through
 the prior expression if true, and return nil for the entire form if false
 
+#### n->
+
 ```clojure
 (n-> 6
     (n (> 5))
@@ -29,6 +31,7 @@ the prior expression if true, and return nil for the entire form if false
     (vector 11 12)) => nil
 ```
 
+#### n->>
 
 ```clojure
 (n->> [1 2 3]
@@ -43,6 +46,9 @@ the prior expression if true, and return nil for the entire form if false
 ### ignoring exceptions
 
 ground will ignore exceptions during threading, returning nil instead
+
+#### ground->
+
 ```clojure
 (ground-> [1 2]
           second
@@ -53,6 +59,7 @@ ground will ignore exceptions during threading, returning nil instead
           inc) => nil
 ```
 
+#### ground->>
 
 ```clojure
 (ground->> 51
