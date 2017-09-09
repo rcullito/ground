@@ -14,6 +14,8 @@
   (:require [ground.core :refer :all]))
 ```
 
+## Usage
+
 ###  predicates
 
 predicates after the symbol `n` pass through
@@ -71,3 +73,7 @@ ground will ignore exceptions during threading, returning nil instead
            (/ 100)) => nil
 ```	
 
+## References
+
+* [clojure.core threading](https://clojure.org/guides/threading_macros)
+* [swiss arrows](https://github.com/rplevy/swiss-arrows)
