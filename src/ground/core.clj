@@ -1,6 +1,6 @@
 (ns ground.core)
 
-(defn n-thread
+(defn- n-thread
   [expr forms operator]
   (reduce (fn [acc x]
             (if (and (seq? x) (= 'n (first x)))
