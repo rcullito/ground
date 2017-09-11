@@ -36,12 +36,10 @@
              ~@forms)
         (catch Exception e# nil)))
 
-;; need to figure out how to wrap this from previous fn
 (defn- try-catch-thread-with-doall
   [expr forms operator]
-  `(try (doall (~operator ~expr
-          ~@forms))
-        (catch Exception e# nil)))
+  (let [[try threading catch] (try-catch-thread expr forms operator)]
+  `(~try (doall ~threading) ~catch)))
 
 (defmacro ground->
   "behaves like ->, except returns nil if exception is thrown"
