@@ -15,6 +15,11 @@
                  (n (> 35))
                  (inc))))))
 
+(deftest form-not-seq
+  (testing "can handle the special use case when one of the forms is not a sequence"
+    (is (= 5 (n-> 4
+                  inc)))))
+
 (deftest predicate-returns-nil
   (testing "that a false predicate returns nil for the entire form"
     (is (= nil (n-> person
@@ -33,7 +38,6 @@
     (is (= nil (n->> [1 2 nil 3]
                      (n (every? identity))
                      (map inc))))))
-
 
 (deftest the-all-is-well-thread
   (testing "that ground-> behaves like ->"

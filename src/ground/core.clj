@@ -3,7 +3,7 @@
 (defn n-thread
   [expr forms operator]
   (reduce (fn [acc x]
-            (if (= 'n (first x))
+            (if (and (seq? x) (= 'n (first x)))
               `(if (~operator ~acc ~(second x))
                  ~acc
                  nil)
