@@ -51,6 +51,6 @@
   [expr & forms]
   (cond
     (sequential? expr) (try-catch-thread-with-doall expr forms '->>) 
-    :else (try-catch-thread expr forms '->>)))
+    :else              (try-catch-thread expr forms '->>)))
 
 
