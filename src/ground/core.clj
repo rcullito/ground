@@ -35,8 +35,8 @@
 
 (defn- try-catch-thread-with-doall
   [expr forms operator]
-  (let [[try threading catch] (try-catch-thread expr forms operator)]
-  `(~try (doall ~threading) ~catch)))
+  (let [[x y z] (try-catch-thread expr forms operator)]
+  `(~x (doall ~y) ~z)))
 
 (defmacro ground->
   "behaves like ->, except returns nil if exception is thrown"
