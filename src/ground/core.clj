@@ -3,26 +3,27 @@
 (defn- n-thread
   [expr forms operator]
   (reduce (fn [acc x]
-            (cond (and (seq? x) (= 'n? (first x))) `(if (~operator ~acc ~(second x))
-                                                      ~acc
-                                                      nil)
-                  :else `(~operator ~acc ~x)))
+            ;; for backwards compatibility treat either n or n? as indicative of a predicate
+            (cond (and (seq? x) (or (= 'n (first x)) (= 'n? (first x)))) `(if (~operator ~acc ~(second x))
+                                                                            ~acc
+                                                                            nil)
+                  (and (seq? x) (= 'n! (first x)))                       `(do (~operator ~acc ~(second x))
+                                                                              ~acc)
+                  :else                                                  `(~operator ~acc ~x)))
           expr
           forms))
 
 (defmacro n->
-  "within -> threading, include predicates after the symbol `n` to either forward 
-  the prior expression if true, or return nil for the entire form if false.
-  Assuming the prior expression resulted in an integer, a valid n predicate might be:
-  `(n (> 3))`"
+  "within -> threading, 
+  use n! for side effects that do not alter the pass through value and n?
+  for predicates that pass through a value if true or return nil for the entire form if false."
   [expr & forms]
   (n-thread expr forms 'some->))
 
 (defmacro n->>
-  "within ->> threading, include predicates after the symbol `n` to either forward 
-  the prior expression if true, or return nil for the entire form if false.
-  Assuming the prior expression resulted in a collection, a valid n predicate might be:
-  `(n (every? identity))`"
+  "within ->> threading, 
+  use n! for side effects that do not alter the pass through value and n?
+  for predicates that pass through a value if true or return nil for the entire form if false."
   [expr & forms]
   (n-thread expr forms 'some->>))
 
@@ -34,8 +35,8 @@
 
 (defn- try-catch-thread-with-doall
   [expr forms operator]
-  (let [[x y z] (try-catch-thread expr forms operator)]
-  `(~x (doall ~y) ~z)))
+  (let [[try threading catch] (try-catch-thread expr forms operator)]
+  `(~try (doall ~threading) ~catch)))
 
 (defmacro ground->
   "behaves like ->, except returns nil if exception is thrown"
