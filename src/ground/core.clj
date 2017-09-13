@@ -3,11 +3,10 @@
 (defn- n-thread
   [expr forms operator]
   (reduce (fn [acc x]
-            (if (and (seq? x) (= 'n (first x)))
-              `(if (~operator ~acc ~(second x))
-                 ~acc
-                 nil)
-              `(~operator ~acc ~x)))
+            (cond (and (seq? x) (= 'n? (first x))) `(if (~operator ~acc ~(second x))
+                                                      ~acc
+                                                      nil)
+                  :else `(~operator ~acc ~x)))
           expr
           forms))
 
