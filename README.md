@@ -80,4 +80,3 @@ ground will ignore exceptions during threading, returning nil instead
 ## References
 
 * [clojure.core threading](https://clojure.org/guides/threading_macros)
-* [swiss arrows](https://github.com/rplevy/swiss-arrows)
