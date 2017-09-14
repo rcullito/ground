@@ -7,12 +7,18 @@
    :dog  "Claire"
    :age 37})
 
-
 (deftest predicate-last-form
   (testing "that the predicate passes through prior value if true"
     (is (= 38 (n-> person
                  (:age)
                  (n? (> 35))
+                 (inc))))))
+
+(deftest predicate-last-form
+  (testing "that for backwards compatibility n functions the same as n?, indicating a subsequent predicate"
+    (is (= 38 (n-> person
+                 (:age)
+                 (n (> 35))
                  (inc))))))
 
 (deftest form-not-seq
@@ -26,6 +32,12 @@
                   (:age)
                   (n? (> 40))
                   (+ 10))))))
+
+(deftest side-effect-does-not-affect-result
+  (testing "can handle the special use case when one of the forms is not a sequence"
+    (is (= 5 (n-> 4
+                  (n! (println "then came the war old sport!"))
+                  inc)))))
 
 (deftest truthy-predicate-returns-collection
   (testing "that the predicate passes through prior value if true"
