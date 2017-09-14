@@ -20,9 +20,8 @@
 (defn- n-thread
   [expr forms operator]
   (reduce (fn [acc x]
-            (cond (intended-predicate x)   `(if (~operator ~acc ~(second x))
-                                              ~acc
-                                              nil)
+            (cond (intended-predicate x)   `(when (~operator ~acc ~(second x))
+                                              ~acc)
                   (intended-side-effect x) `(do (~operator ~acc ~(second x))
                                                 ~acc)
                   :else                    `(~operator ~acc ~x)))
