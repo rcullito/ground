@@ -42,7 +42,7 @@ prior expression if true and return nil for the entire form if false
 ```clojure
 (n->> [1 2 3]
       (n? (every? identity))
-      (map inc)) => (2 3 4)
+      (map inc)) => '(2 3 4)
 
 (n->> [1 nil 3]
       (n? (every? identity))
@@ -61,7 +61,7 @@ always pass through the result of the prior expression
 
 (n->> ["right" "blue" "humpback"]
       (n! (apply println "These are different types of whales:")) ;; prints "These are different types of whales: right blue humpback"
-      sort) => ("blue" "humpback" "right")
+      sort) => '("blue" "humpback" "right")
 ```
 
 ### ignoring exceptions
