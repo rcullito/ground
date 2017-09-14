@@ -25,8 +25,8 @@ The `n->` and `n->>` threading macros allow for predicates, side effects, and er
 
 ### n? - predicates
 
-`n?` signals a subsequent predicate that will pass through the result of the
-prior expression if true, and  nil for the entire form if false
+`n?` signals a predicate that will pass through the result of the
+prior expression if true and return nil for the entire form if false
 
 ```clojure
 (n-> 6
@@ -51,7 +51,7 @@ prior expression if true, and  nil for the entire form if false
 
 ### n! - side effects
 
-`n!` signals a subsequent side effect, such as printing or logging, and will
+`n!` signals a side effect, such as printing or logging, that will
 always pass through the result of the prior expression
 
 ```clojure
