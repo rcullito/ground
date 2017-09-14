@@ -23,7 +23,7 @@
 
 The `n->` and `n->>` threading macros allow for predicates, side effects, and error handling within their forms. 
 
-### n? - predicates
+### n? predicates
 
 `n?` signals a predicate that will pass through the result of the
 prior expression if true and return nil for the entire form if false
@@ -49,7 +49,7 @@ prior expression if true and return nil for the entire form if false
       (map inc)) => nil
 ```
 
-### n! - side effects
+### n! side effects
 
 `n!` signals a side effect, such as printing or logging, that will
 always pass through the result of the prior expression
