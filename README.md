@@ -20,33 +20,48 @@
 
 ## Usage
 
-###  predicates
 
-predicates after the symbol `n` pass through
-the prior expression if true, and return nil for the entire form if false
+The `n->` and `n->>` threading macros allow for predicates, side effects, and error handling within their forms. 
 
-#### n->
+### n? - predicates
+
+`n?` signals a subsequent predicate that will pass through the result of the
+prior expression if true, and  nil for the entire form if false
 
 ```clojure
 (n-> 6
-    (n (> 5))
-    (vector 7 8)) => [6 7 8]
+     (n? (> 5))
+     (vector 7 8)) => [6 7 8]
 
 (n-> 9
-    (n (> 10))
-    (vector 11 12)) => nil
+	 (n? (> 10))
+     (vector 11 12)) => nil
 ```
 
-#### n->>
 
 ```clojure
 (n->> [1 2 3]
-	(n (every? identity))
-	(map inc)) => '(2 3 4)
+	  (n? (every? identity))
+	  (map inc)) => '(2 3 4)
 
 (n->> [1 nil 3]
-	(n (every? identity))
-	(map inc)) => nil
+	  (n? (every? identity))
+	  (map inc)) => nil
+```
+
+### n! - side effects
+
+`n!` signals a subsequent side effect, such as printing or logging, and will
+always pass through the result of the prior expression
+
+```clojure
+(n-> 4
+	 (n! (println "is the best number")) ;; prints "4 is the best number"
+	 inc) => 5	
+
+(n->> ["right" "blue" "humpback"]
+      (n! (apply println "These are different types of whales:")) ;; prints "These are different types of whales: right blue humpback"
+	  sort) => ("blue" "humpback" "right")
 ```
 
 ### ignoring exceptions
