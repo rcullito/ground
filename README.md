@@ -34,19 +34,19 @@ prior expression if true, and  nil for the entire form if false
      (vector 7 8)) => [6 7 8]
 
 (n-> 9
-	 (n? (> 10))
+     (n? (> 10))
      (vector 11 12)) => nil
 ```
 
 
 ```clojure
 (n->> [1 2 3]
-	  (n? (every? identity))
-	  (map inc)) => '(2 3 4)
+      (n? (every? identity))
+      (map inc)) => '(2 3 4)
 
 (n->> [1 nil 3]
-	  (n? (every? identity))
-	  (map inc)) => nil
+      (n? (every? identity))
+      (map inc)) => nil
 ```
 
 ### n! - side effects
@@ -56,12 +56,12 @@ always pass through the result of the prior expression
 
 ```clojure
 (n-> 4
-	 (n! (println "is the best number")) ;; prints "4 is the best number"
-	 inc) => 5	
+     (n! (println "is the best number")) ;; prints "4 is the best number"
+     inc) => 5	
 
 (n->> ["right" "blue" "humpback"]
       (n! (apply println "These are different types of whales:")) ;; prints "These are different types of whales: right blue humpback"
-	  sort) => ("blue" "humpback" "right")
+      sort) => ("blue" "humpback" "right")
 ```
 
 ### ignoring exceptions
