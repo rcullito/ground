@@ -1,6 +1,6 @@
 (ns ground.core-test
   (:require [clojure.test :refer [deftest testing is]]
-            [ground.core :refer [n-> n->> ground-> ground->>]]))
+            [ground.core :refer [n-> n->>]]))
 
 (def person
   {:name "Nancy"
