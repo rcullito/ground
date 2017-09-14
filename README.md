@@ -20,8 +20,7 @@
 
 ## Usage
 
-
-The `n->` and `n->>` threading macros allow for predicates, side effects, and error handling within their forms. 
+The `n->` and `n->>` threading macros allow for predicates and side effects within their forms. 
 
 ### n? predicates
 
@@ -63,34 +62,6 @@ always pass through the result of the prior expression
       (n! (apply println "These are different types of whales:")) ;; prints "These are different types of whales: right blue humpback"
       sort) => '("blue" "humpback" "right")
 ```
-
-### ignoring exceptions
-
-ground will ignore exceptions during threading, returning nil instead
-
-#### ground->
-
-```clojure
-(ground-> [1 2]
-          second
-          inc) => 3
-
-(ground-> [1]
-          second
-          inc) => nil
-```
-
-#### ground->>
-
-```clojure
-(ground->> 51
-           dec
-           (/ 100)) => 2
-
-(ground->> 1
-           dec
-           (/ 100)) => nil
-```	
 
 ## References
 

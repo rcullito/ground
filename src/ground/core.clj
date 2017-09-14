@@ -55,16 +55,3 @@
   (let [[try threading catch] (try-catch-thread expr forms operator)]
   `(~try (doall ~threading) ~catch)))
 
-(defmacro ground->
-  "behaves like ->, except returns nil if exception is thrown"
-  [expr & forms]
-  (try-catch-thread expr forms '->))
-
-(defmacro ground->>
-  "behaves like ->>, except returns nil if exception is thrown"  
-  [expr & forms]
-  (cond
-    (sequential? expr) (try-catch-thread-with-doall expr forms '->>) 
-    :else              (try-catch-thread expr forms '->>)))
-
-
