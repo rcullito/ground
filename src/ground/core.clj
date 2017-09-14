@@ -1,6 +1,5 @@
 (ns ground.core)
 
-
 (defn- intended-predicate
   "determine if the first symbol of the form is intended to signal that the subsequent
   form should be treated as a predicate"
