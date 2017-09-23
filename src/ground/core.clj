@@ -1,21 +1,24 @@
 (ns ground.core)
 
+(defn- valid-n-form?
+  "returns true if form begins with a valid symbol defined within the macro"
+  [valid-n-symbol form]
+  (and (seq? form)
+       (= valid-n-symbol (first form))))
+
 (defn- intended-predicate
   "determine if the first symbol of the form is intended to signal that the subsequent
   form should be treated as a predicate"
   [form]
-  (and
-   (seq? form)
-   ;; for backwards compatibility treat either n or n? as indicative of a predicate
-   (let [signal (first form)]
-     (or (= 'n signal)
-         (= 'n? signal)))))
+  ;; for backwards compatibility treat either n or n? as indicative of a predicate
+  (or (valid-n-form? 'n? form)
+      (valid-n-form? 'n form)))
 
 (defn- intended-side-effect
   "determine if the first symbol of the form is intended to signal that the subsequent
   form should only produce side effects"
   [form]
-  (and (seq? form) (= 'n! (first form))))
+  (valid-n-form? 'n! form))
 
 (defn- n-thread
   [expr forms operator]
