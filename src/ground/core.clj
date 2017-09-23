@@ -21,13 +21,14 @@
   (valid-n-form? 'n! form))
 
 (defn- n-thread
-  [expr forms operator]
+  "builds up forms after expr using the supplied threader, substituting control flow when a n symbol is found"
+  [expr forms threader]
   (reduce (fn [acc x]
-            (cond (intended-predicate x)   `(when (~operator ~acc ~(second x))
+            (cond (intended-predicate x)   `(when (~threader ~acc ~(second x))
                                               ~acc)
-                  (intended-side-effect x) `(do (~operator ~acc ~(second x))
+                  (intended-side-effect x) `(do (~threader ~acc ~(second x))
                                                 ~acc)
-                  :else                    `(~operator ~acc ~x)))
+                  :else                    `(~threader ~acc ~x)))
           expr
           forms))
 
